@@ -1,0 +1,12 @@
+name: Scan Docker Image
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Scan image
+      uses: sysdiglabs/scan-action@v3
+      with:
+        image-tag: "sysdiglabs/dummy-vuln-app:latest"
+        sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
+         sysdig-secure-url: https://eu1.app.sysdig.com
